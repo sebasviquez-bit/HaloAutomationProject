@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+.idea/
+.vscode/
+.husky/_/
+.env
+.env.*
+reports/
+# Keep report directory but ignore generated files
+report/*.html
+!report/.gitkeep
+
+
