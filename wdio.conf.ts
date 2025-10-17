@@ -25,7 +25,7 @@ export const config: Config = {
   connectionRetryCount: 3,
   services: [],
   framework: 'cucumber',
-  reporters: ['spec'],
+  reporters: ['spec', ['json', { outputDir: './report', outputFileFormat: (options) => `wdio-results-${options.cid}.json` }]],
   cucumberOpts: {
     require: ['./step-definitions/**/*.ts'],
     backtrace: false,
