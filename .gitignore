@@ -2,13 +2,20 @@ node_modules/
 dist/
 .DS_Store
 .idea/
-.vscode/
 .husky/_/
 .env
 .env.*
 reports/
+
 # Keep report directory but ignore generated files
 report/*.html
 !report/.gitkeep
+
+# VS Code - Keep team settings, ignore personal workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
 
 

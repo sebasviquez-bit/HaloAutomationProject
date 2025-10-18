@@ -1,8 +1,11 @@
-import type { Config } from '@wdio/types';
+import type { Options } from '@wdio/types';
 
 const isHeadless = process.env.WDIO_HEADLESS === '1';
 
-export const config: Config = {
+// Configure ts-node for transpilation
+process.env.TS_NODE_TRANSPILE_ONLY = 'true';
+
+export const config: Options.Testrunner & { capabilities: any[] } = {
   runner: 'local',
   specs: ['./features/**/*.feature'],
   exclude: [],
@@ -25,7 +28,7 @@ export const config: Config = {
   connectionRetryCount: 3,
   services: [],
   framework: 'cucumber',
-  reporters: ['spec', ['json', { outputDir: './report', outputFileFormat: (options) => `wdio-results-${options.cid}.json` }]],
+  reporters: ['spec', ['json', { outputDir: './report', outputFileFormat: (options: any) => `wdio-results-${options.cid}.json` }]],
   cucumberOpts: {
     require: ['./step-definitions/**/*.ts'],
     backtrace: false,

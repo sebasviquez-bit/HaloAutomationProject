@@ -17,7 +17,8 @@ Then('I should see the main navigation items', async () => {
   for (const item of items) {
     const xpath = `//a[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '${item}')]`;
     const els = await $$(xpath);
-    if (els.length > 0) count++;
+    const length = await els.length;
+    if (length > 0) count++;
   }
   assert(count >= 2, 'Navigation not found or missing expected items');
 });
@@ -167,7 +168,8 @@ When('I click the header menu {string}', async (menuText: string) => {
     ];
     for (const sel of hrefSelectors) {
       const els = await $$(sel);
-      if (els.length) {
+      const length = await els.length;
+      if (length > 0) {
         try {
           await els[0].scrollIntoView();
           await els[0].click();
@@ -196,6 +198,7 @@ Then('the URL should include {string}', async (expected: string) => {
   if (!okUrl) {
     const sectionXpath = `//*[self::h1 or self::h2 or self::h3 or self::a][contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '${expected.toLowerCase()}')]`;
     const matches = await $$(sectionXpath);
-    assert(matches.length > 0, `Expected URL to include "${expected}" or section present, but got ${url}`);
+    const matchCount = await matches.length;
+    assert(matchCount > 0, `Expected URL to include "${expected}" or section present, but got ${url}`);
   }
 });

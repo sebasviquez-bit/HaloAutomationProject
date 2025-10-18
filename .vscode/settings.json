@@ -1,0 +1,13 @@
+{
+  "cucumber.features": [
+    "features/**/*.feature"
+  ],
+  "cucumber.glue": [
+    "step-definitions/**/*.ts"
+  ],
+  "cucumber.parameterTypes": [],
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "files.associations": {
+    "*.feature": "cucumber"
+  }
+}
